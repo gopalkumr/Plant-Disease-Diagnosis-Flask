@@ -1,0 +1,107 @@
+{% extends "import.html" %}
+{% block content %}
+
+<style>
+    /* Add CSS styles for the background image */
+    body {
+        background-image: url('https://source.unsplash.com'); /* set up the Unsplash image */
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+    }
+
+    /* Add CSS styles for animations */
+    .animated-info {
+        animation: fadeInUp 1s;
+    }
+
+    .crop-disease-stats, .flutter-app-info, .open-source-info {
+        animation: fadeInRight 1s;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInRight {
+        from {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+</style>
+
+<center>
+    <br><h2>Plant Disease Diagnosis</h2><br>
+
+    <form id="upload-file" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" class="btn btn-success" id="imageUpload" accept=".png, .jpg, .jpeg">
+    </form>
+
+    <div class="image-section" style="display:none;">
+        <img id="imagePreview" class="img-responsive" src="#" style="width:300px;height:300px;"/><br><br>
+        <div>
+            <button type="button" class="btn btn-info btn-lg" id="btn-predict">Predict!</button>
+        </div>
+    </div>
+
+    <div class="loader" style="display:none;"></div>
+
+    <h3 id="result">
+        <span> </span>
+    </h3>
+
+    <br><br>
+
+    <!-- Add statistics about crop diseases -->
+    <div class="animated-info crop-disease-stats">
+        <h3>Impact of Crop Diseases</h3>
+        <p>Farmers lose approximately 20-40% of their crops annually due to lack of knowledge about plant diseases.</p>
+        <p>Shockingly, this results in billions of dollars in lost revenue worldwide.</p>
+    </div>
+
+    <br><br>
+
+    <!-- Add information about the connection with Flutter app -->
+    <div class="animated-info flutter-app-info">
+        <h3>Connected with Flutter App</h3>
+        <p>Our Flask app is seamlessly integrated with a Flutter mobile app.</p>
+        <p>Farmers can now predict diseases in their crops using our API right from their mobile devices.</p>
+    </div>
+
+    <br><br>
+
+    <!-- Add Team Member Names -->
+    <div class="animated-info team-members">
+        <h3>Meet Our Team</h3>
+        <ul class="list-group">
+            <li class="list-group-item">Gopal Kumar - Leader</li>
+            <li class="list-group-item">Swetha PR - Researcher</li>
+            <li class="list-group-item">Sachin - CI/CD</li>
+            <!-- Add more team members if needed -->
+        </ul>
+    </div>
+
+    <br><br>
+
+    <!-- Add Open Source Information -->
+    <div class="animated-info open-source-info">
+        <h3>Open Source Contributions</h3>
+        <p>We are passionate about open source and have contributed to various projects in the community.</p>
+        <!-- Add details about your open-source contributions here -->
+    </div>
+</center>
+
+{% endblock %}
