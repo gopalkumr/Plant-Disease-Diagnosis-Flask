@@ -1,5 +1,4 @@
 # Minimum Python version
-python>=3.6
 
 # Tensorflow 2
 tensorflow>=2.0.0,<3.0.0
