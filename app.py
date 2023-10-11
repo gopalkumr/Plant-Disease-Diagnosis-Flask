@@ -9,7 +9,7 @@ from tensorflow.keras.preprocessing import image
 # Flask utils
 from flask import Flask, redirect, url_for, request, render_template
 from werkzeug.utils import secure_filename
-from gevent.pywsgi import WSGIServer
+#from gevent.pywsgi import WSGIServer
 
 # Define a flask app
 app = Flask(__name__)
@@ -20,7 +20,7 @@ app = Flask(__name__)
 # Check https://keras.io/applications/
 
 model =tf.keras.models.load_model('PlantDNet.h5',compile=False)
-print('Model loaded. Check http://127.0.0.1:5000/')
+print('Model loaded. Check http://127.0.0.1:5000/ or http://0.0.0.0:5000/')
 
 
 def model_predict(img_path, model):
@@ -68,6 +68,7 @@ def upload():
         a = preds[0]
         ind=np.argmax(a)
         print('Prediction:', disease_class[ind])
+        
 
         result=disease_class[ind]
         return result
@@ -76,8 +77,9 @@ def upload():
 
 if __name__ == '__main__':
     # app.run(port=5002, debug=True)
-
+    from waitress import serve
     # Serve the app with gevent
-    http_server = WSGIServer(('', 5000), app)
-    http_server.serve_forever()
-    app.run()
+    #http_server = WSGIServer(('', 5000), app)
+    #http_server.serve_forever()
+    #app.run()
+    serve(app.run(host='0.0.0.0', port=5000))
