@@ -31,3 +31,6 @@ https://www.kaggle.com/code/gopalkumar0/plant-disease-classification-using-dense
 
 
 
+## Get result through curl
+```
+curl -X POST http://127.0.0.1:5000/predict -F 'file=@demo.jpg'
